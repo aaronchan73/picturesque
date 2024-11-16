@@ -11,7 +11,10 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.21.1"
+    "epub2": "^3.0.2",
+    "epubjs": "^0.3.93",
+    "express": "^4.21.1",
+    "pinata": "^1.8.0"
   },
   "type": "module"
 }

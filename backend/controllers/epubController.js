@@ -2,7 +2,8 @@ import EpubService from '../services/epubService.js';
 
 export const parseEpub = async (req, res) => {
   try {
-    await EpubService.parseEpub();
+    const id = req.params.id;
+    await EpubService.parseEpub(id);
     res.status(201);
   } catch (error) {
     console.error(error);

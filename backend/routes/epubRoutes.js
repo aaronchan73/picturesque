@@ -3,6 +3,6 @@ import { parseEpub } from '../controllers/epubController.js';
 
 const router = express.Router();
 
-router.post('/', parseEpub);
+router.post('/:id', parseEpub);
 
 export default router;
