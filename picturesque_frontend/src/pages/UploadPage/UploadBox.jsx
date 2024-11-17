@@ -75,7 +75,7 @@ const UploadBox = ({ selectedFile, setSelectedFile, uploadedFile, onUpload }) =>
       <p className={styles.acceptedTypes}>Accepted file types: .epub</p>
 
       <div className={styles.buttonGroup}>
-        <button className={styles.cancelButton} onClick={() => navigate('/')}>
+        <button className={styles.cancelButton} onClick={() => navigate('/', { replace: true })}>
           Cancel
         </button>
         <button className={styles.createButton} onClick={onUpload}>

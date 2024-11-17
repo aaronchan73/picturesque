@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import styles from './BookCard.module.css';
 
 const BookCard = ({ imageUrl, size = "medium" }) => {
@@ -6,13 +7,14 @@ const BookCard = ({ imageUrl, size = "medium" }) => {
     medium: styles.medium,
     large: styles.large
   };
-
+  const navigate = useNavigate();
   return (
     <div className={`${styles.bookCard} ${sizeStyles[size]}`}>
       <img
         src={imageUrl}
         alt="Book cover"
         className={styles.bookImage}
+        onClick={() => navigate('/reader', { replace: true })}
       />
     </div>
   );

@@ -40,7 +40,7 @@ const Header = () => {
                       border: "3px solid #187D81",
                       color: "black",
                     }}
-                    onClick={() => navigate('upload')}
+                    onClick={() => navigate('/upload', { replace: true })}
                   >
                     {" "}
                     + Create new

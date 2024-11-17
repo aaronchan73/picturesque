@@ -46,7 +46,7 @@ const StatusMessage = ({ status, onBack }) => {
           <p className={styles.message}>{messages[status]}</p>
           <button 
             className={styles.libraryButton}
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/', { replace: true })}
           >
             Back to Library
           </button>

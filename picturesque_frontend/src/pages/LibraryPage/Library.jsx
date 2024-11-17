@@ -3,8 +3,13 @@ import styles from "./Library.module.css";
 import PageLayout from "../../components/common/PageLayout/PageLayout";
 import BookCard from "../../components/book/BookCard";
 import BookShelf from "./Bookshelf";
+import { useSelector } from "react-redux";
+import { selectAllBooks } from "../../redux/slices/bookSlice";
+import YourBooks from "./YourBooks";
 
 const Library = () => {
+  const books = useSelector(selectAllBooks);
+  console.log(books)
   return (
     <PageLayout title={strings.library.libHeader}>
       <div className={styles.libraryWrapper}>
@@ -14,13 +19,13 @@ const Library = () => {
             <div className="px-5 d-flex flex-row gap-5 align-items-end">
               <BookCard
                 imageUrl={
-                  "https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
+                  "https://m.media-amazon.com/images/I/91KugvH+FwL.jpg"
                 }
                 size="medium"
               />
               <BookCard
                 imageUrl={
-                  "https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
+                  "https://m.media-amazon.com/images/I/611X8GI7hpL._AC_UF1000,1000_QL80_.jpg"
                 }
                 size="small"
               />
@@ -35,7 +40,7 @@ const Library = () => {
         </div>
       </div>
       <div className={styles.bookshelfWrapper}>
-        <BookShelf title={"Your Books"} rows={3}/>
+        <YourBooks />
       </div>
       <div className={styles.bookshelfWrapper}>
         <BookShelf title={"Completed Books"} rows={1}/>

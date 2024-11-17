@@ -9,7 +9,7 @@ const Glossary = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.backButton} onClick={() => navigate('/library')}>
+      <div className={styles.backButton} onClick={() => navigate('/', { replace: true })}>
         &#x2190; to Library
       </div>
       <div className={styles.chapterList}>

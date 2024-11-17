@@ -1,3 +1,6 @@
+import { store } from '../redux/store';
+import { addBook } from '../redux/slices/bookSlice';
+
 export async function processEpub(ipfsHash) {
     const apiUrl = `http://127.0.0.1:5000/epub/${ipfsHash}`;
     
@@ -15,7 +18,14 @@ export async function processEpub(ipfsHash) {
       }
   
       const data = await response.json();
-      console.log(data);
+      
+      // Dispatch to Redux store
+      store.dispatch(addBook({
+        title: data.title,
+        author: data.author,
+        data: data.data
+      }));
+
       return data;
     } catch (error) {
       console.error("Error processing epub:", error);
