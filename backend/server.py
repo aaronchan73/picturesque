@@ -1,4 +1,5 @@
-from flask import Flask, jsonify
+import os
+from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 from pinata_helper import get_file
 from epub_parser import parse_epub_to_text, parse_epub_to_pages
@@ -18,7 +19,8 @@ def parse_and_upload_epub(hash):
         book = parse_epub_to_text('./downloaded_file.epub')
         page_to_hash, page_number = parse_epub_to_pages('./epub_text.txt')
         cover_path = extract_cover_image(book)
-        return jsonify({'message': 'Successfully parsed and uploaded epub', 'data': page_number, 'image_path': send_from_directory(app.config['UPLOAD_FOLDER'], os.path.basename(cover_path))}), 200
+        print(cover_path)
+        return jsonify({'message': 'Successfully parsed and uploaded epub', 'data': page_number}), 200
     except:
         return jsonify({'message': 'Failed to parse and upload epub'}), 500
 
