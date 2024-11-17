@@ -59,6 +59,11 @@ def parse_epub_to_pages(file_url):
     print(page_to_hash)
     return page_to_hash, page_number
 
+def get_title_and_author(book):
+    title = book.get_metadata('DC', 'title')[0][0]
+    author = book.get_metadata('DC', 'creator')[0][0]
+    return title, author
+
 if __name__ == '__main__':
     # parse_epub_to_text('./Charlie_and_the_Chocolate_Factory.epub')
     parse_epub_to_pages('./epub_text.txt')
