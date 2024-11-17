@@ -52,6 +52,9 @@ def parse_epub_to_pages(file_url):
         page_hash = upload_file('./' + page_filename)
         page_to_hash[page_number] = page_hash
 
+        if page_number == 5:
+            break
+
     print(page_to_hash)
     return page_to_hash, page_number
 

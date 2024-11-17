@@ -1,6 +1,6 @@
-import styles from './ReadingPage.module.css';
+import styles from './BookPage.module.css';
 
-const ReadingPage = () => {
+const ReadingPage = ({ text }) => {
   return (
     <div className={styles.readerContainer}>
       <header className={styles.bookHeader}>
@@ -11,7 +11,9 @@ const ReadingPage = () => {
       </header>
       
       <main className={styles.pageContent}>
-        <div className={styles.chapter}>
+        <p>{text}</p>
+
+        {/* <div className={styles.chapter}>
           <h2>Chapter 1</h2>
           
           <h3>Dummy Text Example</h3>
@@ -28,7 +30,7 @@ const ReadingPage = () => {
           
           <h3>Another Subheading</h3>
           <p>Nam cursus efficitur nunc non interdum. Nam non massa mauris. Nulla facilisi.</p>
-        </div>
+        </div> */}
         
         <div className={styles.pageNumber}>5</div>
       </main>
