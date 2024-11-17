@@ -3,7 +3,7 @@ import ebooklib
 from ebooklib import epub
 from pinata_helper import upload_file
 
-WORD_LIMIT = 300
+WORD_LIMIT = 250
 page_to_hash = {}
 
 class HTMLFilter(HTMLParser):
@@ -37,6 +37,7 @@ def parse_epub_to_pages(file_url):
         text = file.read()
 
     words = text.split()
+    words = words[552:]
     pages = []
 
     while words:
