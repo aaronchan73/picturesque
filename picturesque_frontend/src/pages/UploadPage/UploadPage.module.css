@@ -1,0 +1,17 @@
+.uploadContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .uploadContent {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .uploadContent h2 {
+    color: #333;
+    margin-bottom: 3rem;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 2rem;
+  }

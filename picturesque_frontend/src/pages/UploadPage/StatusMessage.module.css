@@ -1,0 +1,78 @@
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-30deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(30deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes loadingDots {
+  0% { content: "."; }
+  33% { content: ".."; }
+  66% { content: "..."; }
+}
+
+.loadingDots::after {
+  content: ".";
+  animation: loadingDots 2s infinite steps(1);
+  display: inline-block;
+  width: 1em;
+  text-align: left;
+  margin-left: 2px; 
+}
+
+/* Rest of your existing CSS */
+
+.statusContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  max-width: 400px; /* or whatever width you prefer */
+}
+
+.illustration {
+  width: 100px;
+  height: auto;
+  margin-bottom: 2rem;
+  animation: spin 1.5s linear infinite;
+}
+
+.message {
+  font-size: 1.2rem;
+  color: #333;
+  font-family: 'Nanum Myeongjo', serif;
+  margin: 0;
+}
+
+.backButton {
+  margin-top: 2rem;
+  padding: 0.8rem 2.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: 2px solid #187D81;
+  color: #187D81;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: rgba(24, 125, 129, 0.1);
+}
+
+.libraryButton {
+  margin-top: 2rem;
+  padding: 0.8rem 2.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: 3px solid #187D81;
+  color: black;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.libraryButton:hover {
+  background: rgba(24, 125, 129, 0.1);
+}

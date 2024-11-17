@@ -31,7 +31,7 @@ def get_page_text_and_image(id):
             text = file.read()
         url = retrieveImageUrl(text)
         print(url)
-        return jsonify({'message': 'Successfully retrieved page text and image', 'data': url}), 200
+        return jsonify({'message': 'Successfully retrieved page text and image', 'image': url, 'text': text}), 200
     except:
         return jsonify({'message': 'Failed to retrieve page text and image'}), 500
 

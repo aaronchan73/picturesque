@@ -1,0 +1,116 @@
+.uploadBoxContainer {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.dropZone {
+  width: 100%;
+  height: 300px;
+  border: 2px dashed #187D81;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.dropZone:hover {
+  border-color: #156366;
+  background-color: rgba(24, 125, 129, 0.05);
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dropText {
+  text-align: center;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.browseText {
+  color: #187D81;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.selectedFile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(24, 125, 129, 0.05);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.fileIcon {
+  display: flex;
+  align-items: center;
+}
+
+.checkmark {
+  margin-left: auto;
+}
+
+.acceptedTypes {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancelButton, .createButton {
+  padding: 0.8rem 2.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.cancelButton {
+  border: 2px solid #187D81;
+  color: #187D81;
+  background: transparent;
+}
+
+.createButton {
+  background: #187D81;
+  color: white;
+  border: none;
+}
+
+.cancelButton:hover {
+  background: rgba(24, 125, 129, 0.1);
+}
+
+.createButton:hover {
+  background: #156366;
+}
+
+.fileInput {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}

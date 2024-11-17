@@ -9,6 +9,7 @@ const Library = () => {
     <PageLayout title={strings.library.libHeader}>
       <div className={styles.libraryWrapper}>
         <div className={styles.shelfBackground}>
+          <div className="py-3" />
           <div className="col d-flex justify-content-end">
             <div className="px-5 d-flex flex-row gap-5 align-items-end">
               <BookCard
