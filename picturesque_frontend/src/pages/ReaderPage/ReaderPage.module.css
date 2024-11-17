@@ -1,0 +1,22 @@
+.bookHeader {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+  
+  .titleSection {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  
+  .titleSection h1 {
+    font-family: "Nanum Myeongjo", serif;
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .chapterTitle {
+    color: #666;
+    font-size: 1.5rem;
+  }
