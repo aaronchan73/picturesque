@@ -3,6 +3,7 @@ from flask_cors import CORS
 from pinata_helper import get_file
 from epub_parser import parse_epub_to_text, parse_epub_to_pages
 from samba import retrieveImageUrl
+from cover_page_helper import extract_cover_image
 
 app = Flask(__name__)
 CORS(app)
@@ -14,9 +15,10 @@ def parse_and_upload_epub(hash):
     global page_to_hash
     try:
         get_file(hash)
-        parse_epub_to_text('./downloaded_file.epub')
+        book = parse_epub_to_text('./downloaded_file.epub')
         page_to_hash, page_number = parse_epub_to_pages('./epub_text.txt')
-        return jsonify({'message': 'Successfully parsed and uploaded epub', 'data': page_number}), 200
+        cover_path = extract_cover_image(book)
+        return jsonify({'message': 'Successfully parsed and uploaded epub', 'data': page_number, 'image_path': send_from_directory(app.config['UPLOAD_FOLDER'], os.path.basename(cover_path))}), 200
     except:
         return jsonify({'message': 'Failed to parse and upload epub'}), 500
 

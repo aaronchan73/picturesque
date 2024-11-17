@@ -28,6 +28,7 @@ def parse_epub_to_text(file_url):
 
     with open(fileOut, 'w', encoding='utf-8') as fout:
         fout.write(content)
+    return book
 
 def parse_epub_to_pages(file_url):
     page_number = 0
