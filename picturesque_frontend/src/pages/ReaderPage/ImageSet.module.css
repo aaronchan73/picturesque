@@ -1,3 +1,121 @@
+.thumbnail {
+    width: 100%;
+    height: 100px;  /* Fixed height for thumbnails */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .thumbnail:hover {
+    transform: translateY(-2px);
+  }
+  
+  .thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+
+.thumbnailRow {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  
+  .thumbnail {
+    width: calc(33.333% - 0.67rem);
+    aspect-ratio: 1/1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .thumbnail:hover {
+    transform: translateY(-2px);
+  }
+  
+  .thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+  }
+  
+  .loadingImage {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1rem;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  .loadingText {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+    text-align: center;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-30deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(30deg); }
+    100% { transform: rotate(0deg); }
+  }
+  
+  .loadingDots::after {
+    content: ".";
+    animation: loadingDots 2s infinite steps(1);
+    display: inline-block;
+    width: 1em;
+    text-align: left;
+    margin-left: 2px;
+  }
+  
+  @keyframes loadingDots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+  }
+  
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.05);
+  }
+  
+  .loadingSpinner {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .loadingDots::after {
+    content: ".";
+    animation: loadingDots 2s infinite steps(1);
+    display: inline-block;
+    width: 1em;
+    text-align: left;
+    margin-left: 2px;
+  }
+  
+  @keyframes loadingDots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+  }
 .imageSetContainer {
     display: flex;
     flex-direction: column;

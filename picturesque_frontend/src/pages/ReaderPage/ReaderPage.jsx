@@ -3,77 +3,64 @@ import ImageSet from "./ImageSet";
 import Glossary from "./Glossary";
 import BookPage from "./BookPage";
 import { useState, useEffect } from "react";
-import LoadingPage from "./LoadingPage";
-import LeftArrow from './leftarrow.png'
-import RightArrow from './rightarrow.png'
+import LeftArrow from '../../assets/leftarrow.png'
+import RightArrow from '../../assets/rightarrow.png'
+import { useQuery } from "@tanstack/react-query";
+
+const fetchPageData = async (page) => {
+  const response = await fetch(`http://localhost:5000/image/${page}`);
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
+};
 
 const ReaderPage = () => {
-  const [main, setMain] = useState("");
-  const [thumbnails, setThumbnails] = useState([
-    "https://picsum.photos/200/300/?blur",
-    "https://picsum.photos/200/300/?blur",
-    "https://picsum.photos/200/300/?blur",]
-  );
   const [page, setPage] = useState(1);
-  const [text, setText] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState("");
-  useEffect(() => {
-    console.log(page)
-    fetch(`http://localhost:5000/metadata`)
-      .then((response) => response.json())
-      .then((data) => {
-        setTitle(data.title);
-      });
-  }, [])
-  useEffect(() => {
-    console.log(page)
-    fetch(`http://localhost:5000/image/${page}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.image)
-        setMain(data.image);
-        setText(data.text);
-        setLoading(false);
-      });
-  }, [page])
+  const [previousImages, setPreviousImages] = useState([]);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['page', page],
+    queryFn: () => fetchPageData(page),
+  });
+
   return (
     <PageLayout title={null}>
-      {loading ? <LoadingPage /> :
-      <>
-        <div className="row">
-          <div className="col-2">
-            <Glossary />
-          </div>
-          <div className="col-6">
-            <BookPage text={text} title={title} />
-          </div>
-          <div className="col-4">
-            <ImageSet
-              mainImageUrl={main}
-              thumbnailUrls={thumbnails}
-            />
-            <br />
-            <button 
-              style={{ border: 'none', background: 'none' }} 
-              onClick={() => {
-                setLoading(true)
-                setPage(page - 1)}
-              }>
-              <img src={LeftArrow} alt="Previous Page" />
-            </button>
-            <button 
-              style={{ border: 'none', background: 'none' }} 
-              onClick={() => {
-                setLoading(true)
-                setPage(page + 1)}
-              }>
-              <img src={RightArrow} alt="Next Page" />
-            </button>
-          </div>
+      <div className="row">
+        <div className="col-2">
+          <Glossary />
         </div>
-        <div className='py-3' />
-      </>}
+        <div className="col-6">
+          <BookPage 
+            text={data?.text} 
+            title={"Charlie and the Chocolate Factory"} 
+            isLoading={isLoading}
+          />
+        </div>
+        <div className="col-4">
+          <ImageSet
+            mainImageUrl={data?.image}
+            previousImages={previousImages}
+            isLoading={isLoading}
+          />
+          <br />
+          <button 
+            style={{ border: 'none', background: 'none' }} 
+            onClick={() => setPage(page - 1)}
+            disabled={page <= 1 || isLoading}
+          >
+            <img src={LeftArrow} alt="Previous Page" />
+          </button>
+          <button 
+            style={{ border: 'none', background: 'none' }} 
+            onClick={() => setPage(page + 1)}
+            disabled={isLoading}
+          >
+            <img src={RightArrow} alt="Next Page" />
+          </button>
+        </div>
+      </div>
+      <div className='py-3' />
     </PageLayout>
   );
 };
