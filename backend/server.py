@@ -15,8 +15,8 @@ def parse_and_upload_epub(hash):
     try:
         get_file(hash)
         parse_epub_to_text('./downloaded_file.epub')
-        page_to_hash = parse_epub_to_pages('./epub_text.txt')
-        return jsonify({'message': 'Successfully parsed and uploaded epub'}), 200
+        page_to_hash, page_number = parse_epub_to_pages('./epub_text.txt')
+        return jsonify({'message': 'Successfully parsed and uploaded epub', 'data': page_number}), 200
     except:
         return jsonify({'message': 'Failed to parse and upload epub'}), 500
 

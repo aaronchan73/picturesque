@@ -53,7 +53,7 @@ def parse_epub_to_pages(file_url):
         page_to_hash[page_number] = page_hash
 
     print(page_to_hash)
-    return page_to_hash
+    return page_to_hash, page_number
 
 if __name__ == '__main__':
     # parse_epub_to_text('./Charlie_and_the_Chocolate_Factory.epub')
