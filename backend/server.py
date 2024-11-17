@@ -23,6 +23,15 @@ def parse_and_upload_epub(hash):
         return jsonify({'message': 'Successfully parsed and uploaded epub', 'data': page_number, 'title': title, 'author': author}), 200
     except:
         return jsonify({'message': 'Failed to parse and upload epub'}), 500
+    
+@app.route('/metadata', methods=['GET'])
+def get_metadata():
+    try:
+        book = parse_epub_to_text('./downloaded_file.epub')
+        title, author = get_title_and_author(book)
+        return jsonify({'title': title, 'author': author}), 200
+    except:
+        return jsonify({'message': 'Failed to retrieve metadata'}), 500
 
 @app.route('/image/<id>', methods=['GET'])
 def get_page_text_and_image(id):

@@ -1,11 +1,11 @@
 import styles from './BookPage.module.css';
 
-const ReadingPage = ({ text }) => {
+const ReadingPage = ({ text, title }) => {
   return (
     <div className={styles.readerContainer}>
       <header className={styles.bookHeader}>
         <div className={styles.titleSection}>
-          <h1>Book Title Example</h1>
+          <h1>{title}</h1>
           <span className={styles.chapterTitle}>Chapter 1</span>
         </div>
       </header>

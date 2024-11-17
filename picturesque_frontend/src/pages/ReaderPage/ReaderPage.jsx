@@ -4,6 +4,8 @@ import Glossary from "./Glossary";
 import BookPage from "./BookPage";
 import { useState, useEffect } from "react";
 import LoadingPage from "./LoadingPage";
+import LeftArrow from './leftarrow.png'
+import RightArrow from './rightarrow.png'
 
 const ReaderPage = () => {
   const [main, setMain] = useState("");
@@ -14,7 +16,16 @@ const ReaderPage = () => {
   );
   const [page, setPage] = useState(1);
   const [text, setText] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState("");
+  useEffect(() => {
+    console.log(page)
+    fetch(`http://localhost:5000/metadata`)
+      .then((response) => response.json())
+      .then((data) => {
+        setTitle(data.title);
+      });
+  }, [])
   useEffect(() => {
     console.log(page)
     fetch(`http://localhost:5000/image/${page}`)
@@ -35,18 +46,30 @@ const ReaderPage = () => {
             <Glossary />
           </div>
           <div className="col-6">
-            <BookPage text={text} />
+            <BookPage text={text} title={title} />
           </div>
           <div className="col-4">
             <ImageSet
               mainImageUrl={main}
               thumbnailUrls={thumbnails}
             />
-            <button onClick={() => {
-              setLoading(true)
-              setPage(page + 1)}
-            }>{">"}
-              </button>
+            <br />
+            <button 
+              style={{ border: 'none', background: 'none' }} 
+              onClick={() => {
+                setLoading(true)
+                setPage(page - 1)}
+              }>
+              <img src={LeftArrow} alt="Previous Page" />
+            </button>
+            <button 
+              style={{ border: 'none', background: 'none' }} 
+              onClick={() => {
+                setLoading(true)
+                setPage(page + 1)}
+              }>
+              <img src={RightArrow} alt="Next Page" />
+            </button>
           </div>
         </div>
         <div className='py-3' />
