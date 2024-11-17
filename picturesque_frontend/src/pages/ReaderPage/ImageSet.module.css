@@ -1,0 +1,73 @@
+.imageSetContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .mainImageContainer {
+    width: 100%;
+    aspect-ratio: 1/1;  /* Changed to 1/1 for square */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* This ensures the image fills the square without distortion */
+  }
+  
+  .thumbnailRow {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .thumbnail {
+    width: 200px;
+    aspect-ratio: 1/1;  /* Explicit square aspect ratio */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Hover effects */
+  .mainImageContainer:hover,
+  .thumbnail:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mainImage,
+  .thumbnailImage {
+    transition: transform 0.3s ease;
+  }
+  
+  .mainImageContainer:hover .mainImage,
+  .thumbnail:hover .thumbnailImage {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .thumbnailRow {
+      flex-wrap: wrap;
+    }
+    
+    .thumbnail {
+      width: calc(33.333% - 0.67rem);
+    }
+  }

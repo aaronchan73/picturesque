@@ -1,0 +1,31 @@
+.libraryWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.shelfBackground {
+  background-image: url("../../assets/shelf.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% auto;
+  width: 1000px;
+  max-width: 1200px !important;
+  padding-bottom: 4rem;
+  margin: 0 !important;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.welcome {
+  color: #187d81;
+}
+
+.bookshelfWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
