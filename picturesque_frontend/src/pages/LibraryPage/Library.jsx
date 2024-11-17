@@ -31,18 +31,18 @@ const Library = () => {
           </div>
           <div className="col">
             <div className="px-5">
-              <div style={{paddingLeft:'180px'}}>
+              <div style={{paddingLeft:'200px'}}>
                 <img
                   src="/src/assets/cheer.png"
                   alt="Cheer"
                   style={{
                     width: "50px",
-                    marginBottom:'0px'
+                    marginBottom:'-2px'
                   }}
                 />
               </div>
               <h3 className={styles.welcome}>{strings.library.welcome}</h3>
-              <p style={{ maxWidth: "325px" }}>{strings.library.welcomeBody}</p>
+              <p style={{ maxWidth: "280px" }}>{strings.library.welcomeBody}</p>
             </div>
           </div>
         </div>
