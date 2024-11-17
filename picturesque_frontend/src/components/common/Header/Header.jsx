@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router';
 import Logo from '../../../assets/logo.png';
 
 const Header = () => {
+  const navigate = useNavigate()
   return (
     <header className="text-black py-3 mb-4">
       <div className="container m-2">
@@ -27,7 +29,7 @@ const Header = () => {
             <nav>
               <ul className="nav">
                 <li className="nav-item px-5">
-                  <a href="/library" className="nav-link text-black">
+                  <a href="/" className="nav-link text-black">
                     Library
                   </a>
                 </li>
@@ -38,6 +40,7 @@ const Header = () => {
                       border: "3px solid #187D81",
                       color: "black",
                     }}
+                    onClick={() => navigate('upload')}
                   >
                     {" "}
                     + Create new

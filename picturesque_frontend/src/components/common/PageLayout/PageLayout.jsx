@@ -5,7 +5,7 @@ const PageLayout = ({ title, children }) => {
   return (
     <div className="container">
       <Header />
-      {title === null ? null : <h5 className={`${styles.title} text-center my-4 pb-5`}>{title}</h5>}
+      {title === null ? null : <h5 className={`${styles.title} text-center my-4 pb-3`}>{title}</h5>}
       {children}
     </div>
   );
