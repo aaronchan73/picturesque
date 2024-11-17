@@ -1,7 +1,7 @@
 from html.parser import HTMLParser
 import ebooklib
 from ebooklib import epub
-from pinata_helper import upload_epub
+from pinata_helper import upload_file
 
 WORD_LIMIT = 300
 page_to_hash = {}
@@ -15,7 +15,7 @@ class HTMLFilter(HTMLParser):
         self.text += data
 
 def parse_epub_to_text(file_url):
-    fileOut = "test3.txt"
+    fileOut = "epub_text.txt"
 
     book = epub.read_epub(file_url)
     content = ""
@@ -49,11 +49,12 @@ def parse_epub_to_pages(file_url):
         with open(page_filename, 'w', encoding='utf-8') as page_file:
             page_file.write(page)
 
-        page_hash = upload_epub('./' + page_filename)
+        page_hash = upload_file('./' + page_filename)
         page_to_hash[page_number] = page_hash
 
     print(page_to_hash)
+    return page_to_hash
 
 if __name__ == '__main__':
     # parse_epub_to_text('./Charlie_and_the_Chocolate_Factory.epub')
-    parse_epub_to_pages('./test3.txt')
+    parse_epub_to_pages('./epub_text.txt')

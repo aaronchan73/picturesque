@@ -27,6 +27,7 @@ def upload_file(file_path):
 
 def get_file(ipfs_hash):
     file_url = f'https://gateway.pinata.cloud/ipfs/{ipfs_hash}'
+    print(f"Downloading file from {file_url}")
 
     response = requests.get(file_url)
 
